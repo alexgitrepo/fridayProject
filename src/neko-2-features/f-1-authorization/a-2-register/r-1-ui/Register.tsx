@@ -15,7 +15,7 @@ const Register: React.FC<IRegisterProps> = (
 
     return (
         <div>
-            register
+            Sign IN
 
 
         </div>
