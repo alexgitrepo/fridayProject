@@ -22,7 +22,6 @@ const Register: React.FC<IRegisterProps> = (
             <input type="password" placeholder="repeat password"/>
             <button>Register</button>
             <NavLink to={SIGN_IN_PATH}>sign in</NavLink>
-
         </div>
     );
 };
