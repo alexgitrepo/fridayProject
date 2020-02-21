@@ -15,9 +15,13 @@ const SignIn: React.FC<ISignInProps> = (
     console.log('render SignIn');
     return (
         <div>
-            sign-in
-
-
+            <form action="">
+                <input type="text" placeholder={"your login"}/>
+                <br/>
+                <input type="text" placeholder={"your password"}/>
+                <br/>
+                <button>Sign In</button>
+            </form>
         </div>
     );
 };
