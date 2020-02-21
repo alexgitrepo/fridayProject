@@ -1,3 +1,5 @@
+import {ICurrentUser} from "./registerInitialState";
+
 export const REGISTER_LOADING = 'REGISTER/LOADING';
 export const REGISTER_ERROR = 'REGISTER/ERROR';
 export const REGISTER_SUCCESS = 'REGISTER/SUCCESS';
@@ -6,12 +8,14 @@ export const REGISTER = 'REGISTER/SOME';
 
 interface IRegisterSome { // blank
     type: typeof REGISTER;
-
+    CurrentUser:ICurrentUser
+    success:boolean
 }
 
 export type IRegisterActions = IRegisterSome;
 
-export const registerSome = (): IRegisterSome => ({ // blank
+export const registerSome = (CurrentUser:ICurrentUser,success:boolean): IRegisterSome => ({ // blank
     type: REGISTER,
-
+    CurrentUser,
+    success
 });
