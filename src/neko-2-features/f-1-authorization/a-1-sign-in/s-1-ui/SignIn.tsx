@@ -12,21 +12,22 @@ const SignIn: React.FC<ISignInState & MethodsInterface> = (
 ) => {
     const handleSignIn = () => {
         signIn(emailState, passwordState, rememberMeState)
-    }
+    };
+
     const [emailState, setEmail] = useState(email);
     const [passwordState, setPassword] = useState(password);
     const [rememberMeState, setRememberMe] = useState(rememberMe);
 
     const emailChange = (e: any) => {
         setEmail(e.target.value)
-    }
+    };
 
     const passwordChange = (e: any) => {
         setPassword(e.target.value);
     };
     const rememberMeChange = (e: any) => {
         setRememberMe(!e.target.checked)
-    }
+    };
     console.log('render SignIn');
     return (
         <div>
@@ -37,7 +38,7 @@ const SignIn: React.FC<ISignInState & MethodsInterface> = (
             <label htmlFor="rememberMe">Remember me</label>
             <input type="checkbox" onChange={rememberMeChange} name={"rememberMe"} checked={rememberMeState}/>
             <br/>
-            <button onClick={handleSignIn}>Sign In</button>
+            <button onClick={handleSignIn}>Sign in*</button>
         </div>
     );
 };
