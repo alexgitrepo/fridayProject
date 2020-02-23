@@ -16,5 +16,11 @@ export const signIn =
             dispatch: ThunkDispatch<IAppStore, ExtraArgument, ISignInActions | INekoActions>,
             getStore: IGetStore
         ) => {
-
+            try {
+                const result = await SignInAPI({email,password,rememberMe});
+                // signInSome()
+                alert('Welcome')
+            } catch (e) {
+                alert('incorect')
+            }
         };
