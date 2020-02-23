@@ -1,26 +1,48 @@
-import React from 'react';
-import {NavLink} from "react-router-dom";
+import React, {ChangeEvent, useState} from 'react';
+import {NavLink, Redirect} from "react-router-dom";
 import {SIGN_IN_PATH} from "../../../../neko-1-main/m-1-ui/Routes";
 import style from'./Register.module.css'
 
 interface IRegisterProps {
-
+    isRegistered:boolean
+    registerRequest:any
 }
 
-const Register: React.FC<IRegisterProps> = (
-    {
+const Register: React.FC<IRegisterProps> = ({isRegistered,registerRequest}) => {
+  let  [email,emailSet]=useState("")
+    let  [passwordFirst,firstPasswordSet]=useState("")
+    let  [passwordSecond,SecondPasswordSet]=useState("")
+let [passwordError,changePasswordErrorState]=useState(false)
+const register=()=>{
+      if (passwordFirst!==passwordSecond){
+          changePasswordErrorState(true)
 
+      }
+      else{
+    registerRequest(email,passwordSecond)
+          changePasswordErrorState(false)
+  }}
+  const emailOnchange =(e:ChangeEvent<HTMLInputElement>)=>{
+      emailSet(e.currentTarget.value)
+  }
+    const FirstPasswordOnchange =(e:ChangeEvent<HTMLInputElement>)=>{
+        firstPasswordSet(e.currentTarget.value)
     }
-) => {
+    const SecondPasswordOnchange =(e:ChangeEvent<HTMLInputElement>)=>{
+        SecondPasswordSet(e.currentTarget.value)
+    }
 
+    if (isRegistered){ return <Redirect to={SIGN_IN_PATH}/>}
 
     return (
+
         <div className={style.register}>
             register
-            <input type="text" placeholder="enter e-mail"/>
-            <input type="password" placeholder="enter password" />
-            <input type="password" placeholder="repeat password"/>
-            <button>Register</button>
+            {passwordError&&<div className={style.error}>Passwords do not match</div>}
+            <input onChange={emailOnchange} type="text" placeholder="enter e-mail"  value={email}/>
+            <input onChange={FirstPasswordOnchange} type="password" placeholder="enter password" value={passwordFirst}/>
+            <input onChange={SecondPasswordOnchange} type="password" placeholder="repeat password" value={passwordSecond}/>
+            <button onClick={register}>Register</button>
             <NavLink to={SIGN_IN_PATH}>sign in</NavLink>
         </div>
     );

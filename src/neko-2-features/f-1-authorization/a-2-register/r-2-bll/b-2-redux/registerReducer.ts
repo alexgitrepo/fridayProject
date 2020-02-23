@@ -5,7 +5,8 @@ export const registerReducer = (state = registerInitialState, action: IRegisterA
     switch (action.type) {
         case REGISTER: { // blank
             return {
-                ...state,
+                ...state, CurrentUser:{...action.CurrentUser},
+                success:action.success
 
             }
         }
