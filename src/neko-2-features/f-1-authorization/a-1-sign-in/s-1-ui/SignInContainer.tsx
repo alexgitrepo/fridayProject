@@ -1,24 +1,29 @@
-import React, {useEffect, useState} from 'react';
-import {Redirect} from "react-router-dom";
-import {NEKO_PATH} from "../../../../neko-1-main/m-1-ui/Routes";
+import React from 'react';
 import SignIn from "./SignIn";
-import Disconnect from "./Disconnect";
 import {connect} from 'react-redux';
 import {ISignInState} from "../s-2-bll/b-2-redux/signInInitialState";
-import {signIn} from "../s-2-bll/signInThunk";
-import {signInSome} from "../s-2-bll/b-2-redux/signInActions";
+import {signInThunk} from "../s-2-bll/signInThunk";
+import {signInEmailChange, signInPasswordChange, signInRememberMeChange} from "../s-2-bll/b-2-redux/signInActions";
 
 export interface MethodsInterface {
-    signIn: Function,
+    signInThunk: Function,
+    signInEmailChange: Function,
+    signInPasswordChange: Function,
+    signInRememberMeChange: Function
 }
 
-const SignInContainer: React.FC<ISignInState & MethodsInterface> = ({email,password,rememberMe,signIn}) => {
+const SignInContainer: React.FC<ISignInState & MethodsInterface> = (
+    {email, password, rememberMe, signInThunk ,signInEmailChange , signInPasswordChange, signInRememberMeChange}
+    ) => {
 
     return (
         <SignIn email={email}
                 password={password}
                 rememberMe={rememberMe}
-                signIn={signIn}
+                signInThunk={signInThunk}
+                signInEmailChange={signInEmailChange}
+                signInPasswordChange={ signInPasswordChange}
+                signInRememberMeChange={signInRememberMeChange}
         />
     );
 };
@@ -31,4 +36,7 @@ let mapStateToProps = (state: any) => {
     }
 }
 
-export default connect(mapStateToProps, {signIn})(SignInContainer);
+export default connect(mapStateToProps, {
+    signInThunk, signInEmailChange,
+    signInPasswordChange, signInRememberMeChange
+})(SignInContainer);
