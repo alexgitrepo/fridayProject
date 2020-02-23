@@ -12,7 +12,7 @@ const SignIn: React.FC<ISignInState & MethodsInterface> = (
     {email, password, rememberMe, signInThunk, signInEmailChange, signInPasswordChange, signInRememberMeChange}
 ) => {
     const handleSignIn = () => {
-        signInThunk()
+        signInThunk(email, password, rememberMe)
     };
     const emailChange = (e: any) => {
         signInEmailChange(e.target.value)
