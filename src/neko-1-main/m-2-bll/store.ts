@@ -9,7 +9,6 @@ const reducers = combineReducers({
     signIn: signInReducer,
     register: registerReducer,
     forgot: forgotReducer,
-
     neko: nekoReducer,
 });
 

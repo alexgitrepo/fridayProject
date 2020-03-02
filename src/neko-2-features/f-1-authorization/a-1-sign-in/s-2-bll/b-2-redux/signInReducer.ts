@@ -1,7 +1,7 @@
-import {signInInitialState} from "./signInInitialState";
+import {signInInitialState, ISignInState} from "./signInInitialState";
 import {SIGN_IN, SIGN_IN_EMAIL, SIGN_IN_PASSWORD, SIGN_IN_REMEMBER_ME, SignInAllActionsType} from "./signInActions";
 
-export const signInReducer = (state = signInInitialState, action: SignInAllActionsType) => {
+export const signInReducer = (state = signInInitialState, action: SignInAllActionsType): ISignInState => {
     switch (action.type) {
         case SIGN_IN_EMAIL:
             return {

@@ -7,7 +7,7 @@ export const SIGN_IN_LOADING = 'SIGN_IN/LOADING';
 export const SIGN_IN_ERROR = 'SIGN_IN/ERROR';
 export const SIGN_IN_SUCCESS = 'SIGN_IN/SUCCESS';
 
-//DESCRIPTION TYPES || INTERFACES
+// ACTION TYPES
 export type SignInEmailChangeType = {
     type: typeof SIGN_IN_EMAIL
     email: string
@@ -24,6 +24,7 @@ export type SignInRememberMeChangeType = {
 export type SignInRequestType = {
     type: typeof SIGN_IN
 }
+
 export type SignInAllActionsType = SignInEmailChangeType
     | SignInPasswordChangeType
     | SignInRememberMeChangeType
@@ -37,4 +38,5 @@ export const signInPasswordChange = (password: string): SignInPasswordChangeType
 });
 export const signInRememberMeChange = (rememberMe: boolean) : SignInRememberMeChangeType => ({type:SIGN_IN_REMEMBER_ME,
     rememberMe})
+
 export const signInSome = (): SignInRequestType => ({type: SIGN_IN});
