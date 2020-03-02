@@ -1,9 +1,12 @@
 import React, {FC} from 'react';
-import {ISignInState} from "../s-2-bll/b-2-redux/signInInitialState";
 import {MapDispatchToPropsType} from "./SignInContainer";
 
-
-const SignIn: FC<ISignInState & MapDispatchToPropsType> = (
+type Props = {
+    email: string
+    password: string
+    rememberMe: boolean
+}
+const SignIn: FC<Props & MapDispatchToPropsType> = (
     {email, password, rememberMe, signInThunk, signInEmailChange, signInPasswordChange, signInRememberMeChange}
 ) => {
     const handleSignIn = () => {
@@ -19,7 +22,7 @@ const SignIn: FC<ISignInState & MapDispatchToPropsType> = (
         signInRememberMeChange(e.target.checked)
     };
     return (
-        <div>
+        <div className="form">
             <input type="text" onChange={emailChange} value={email} placeholder={"your login"}/>
             <br/>
             <input type="text" onChange={passwordChange} value={password} placeholder={"your password"}/>

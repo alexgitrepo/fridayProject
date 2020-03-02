@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import  thunkMiddleware from "redux-thunk"
-import {signInReducer} from "../../neko-2-features/f-1-authorization/a-1-sign-in/s-2-bll/b-2-redux/signInReducer";
+import {signInReducer} from "../../neko-2-features/f-1-authorization/sign-in/sign-in-bll/redux/signInReducer";
 import {registerReducer} from "../../neko-2-features/f-1-authorization/a-2-register/r-2-bll/b-2-redux/registerReducer";
 import {forgotReducer} from "../../neko-2-features/f-1-authorization/a-3-forgot/f-2-bll/b-2-redux/forgotReducer";
 import {nekoReducer} from "../../neko-2-features/f-4-social/s-1-neko/n-2-bll/b-2-redux/nekoReducer";

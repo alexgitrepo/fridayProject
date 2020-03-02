@@ -1,5 +1,12 @@
-import {signInInitialState, ISignInState} from "./signInInitialState";
-import {SIGN_IN, SIGN_IN_EMAIL, SIGN_IN_PASSWORD, SIGN_IN_REMEMBER_ME, SignInAllActionsType} from "./signInActions";
+import {ISignInState, signInInitialState} from "./signInInitialState";
+import {
+    SIGN_IN,
+    SIGN_IN_EMAIL,
+    SIGN_IN_PASSWORD,
+    SIGN_IN_REMEMBER_ME,
+    SIGN_IN_SUCCESS,
+    SignInAllActionsType
+} from "./signInActions";
 
 export const signInReducer = (state = signInInitialState, action: SignInAllActionsType): ISignInState => {
     switch (action.type) {
@@ -26,6 +33,11 @@ export const signInReducer = (state = signInInitialState, action: SignInAllActio
                 rememberMe: state.rememberMe
             }
         }
+        case SIGN_IN_SUCCESS:
+            return {
+                ...state,
+                auth: true
+            }
         default: {
             return state;
         }

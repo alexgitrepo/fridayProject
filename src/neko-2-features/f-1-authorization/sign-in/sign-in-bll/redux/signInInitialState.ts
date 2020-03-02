@@ -1,13 +1,17 @@
 export interface ISignInState {
     email: string,
     password: string,
-    rememberMe: boolean
+    rememberMe: boolean,
+    auth: boolean,
+    // isFetching: boolean
 }
 
 export const signInInitialState: ISignInState = {
     email: '',
     password: '',
-    rememberMe: false
+    rememberMe: false,
+    auth: false,
+    // isFetching: false
 };
 //
 // email: 'test@email.nya',
