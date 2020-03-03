@@ -6,7 +6,7 @@ main{
     align-items: center;
 
 }
-input[type="text"]{
+input[type="text"], input[type="password"]{
     padding: 5px 10px;
     font-size: 16px;
     margin-bottom: 10px;
