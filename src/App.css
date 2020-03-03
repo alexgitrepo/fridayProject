@@ -39,3 +39,11 @@ button{
     padding: 40px;
     box-shadow: 0 0 5px 0 #333333;
 }
+.error-message{
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    text-align: center;
+    border: 2px solid red;
+    color: red;
+}

@@ -2,6 +2,7 @@ import {ISignInState, signInInitialState} from "./signInInitialState";
 import {
     SIGN_IN,
     SIGN_IN_EMAIL,
+    SIGN_IN_ERROR,
     SIGN_IN_PASSWORD,
     SIGN_IN_REMEMBER_ME,
     SIGN_IN_SUCCESS,
@@ -37,9 +38,16 @@ export const signInReducer = (state = signInInitialState, action: SignInAllActio
             return {
                 ...state,
                 auth: true
+            };
+        case SIGN_IN_ERROR:
+            debugger
+            return {
+                ...state,
+                error: action.error
             }
         default: {
             return state;
         }
+
     }
 };

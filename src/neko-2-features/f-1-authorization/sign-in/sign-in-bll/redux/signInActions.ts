@@ -24,6 +24,10 @@ export type SignInRememberMeChangeType = {
 export type SignInSuccessType = {
     type: typeof SIGN_IN_SUCCESS
 }
+export type SignInErrorType = {
+    type: typeof SIGN_IN_ERROR
+    error: string
+}
 export type SignInRequestType = {
     type: typeof SIGN_IN
 }
@@ -32,6 +36,7 @@ export type SignInAllActionsType = SignInEmailChangeType
     | SignInPasswordChangeType
     | SignInRememberMeChangeType
     | SignInSuccessType
+    | SignInErrorType
     | SignInRequestType;
 
 // ACTION CREATORS
@@ -42,5 +47,6 @@ export const signInPasswordChange = (password: string): SignInPasswordChangeType
 });
 export const signInRememberMeChange = (rememberMe: boolean) : SignInRememberMeChangeType => ({type:SIGN_IN_REMEMBER_ME,
     rememberMe})
-export const signInSuccess = ():SignInSuccessType => ({type: SIGN_IN_SUCCESS})
+export const signInSuccess = (): SignInSuccessType => ({type: SIGN_IN_SUCCESS});
+export const signInError = (error: string ):SignInErrorType => ({type: SIGN_IN_ERROR, error});
 export const signInSome = (): SignInRequestType => ({type: SIGN_IN});

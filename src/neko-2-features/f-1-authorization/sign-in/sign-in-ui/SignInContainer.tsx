@@ -8,7 +8,7 @@ import {IAppStore} from "../../../../neko-1-main/m-2-bll/store";
 import {Redirect} from 'react-router-dom';
 
 const SignInContainer: React.FC<ISignInState & MapDispatchToPropsType> = (
-    {email, password, rememberMe, auth, signInThunk, signInEmailChange, signInPasswordChange, signInRememberMeChange}
+    {email, password, rememberMe, auth, signInThunk,error, signInEmailChange, signInPasswordChange, signInRememberMeChange}
 ) => {
 
     if (auth) {
@@ -16,6 +16,7 @@ const SignInContainer: React.FC<ISignInState & MapDispatchToPropsType> = (
     }
     return (
         <SignIn email={email}
+                error={error}
                 password={password}
                 rememberMe={rememberMe}
                 signInThunk={signInThunk}
@@ -37,13 +38,15 @@ type MapStateToPropsType = {
     password: string
     rememberMe: boolean
     auth: boolean
+    error: null | string
 }
 let mapStateToProps = (state: IAppStore) => {
     return {
         email: state.signIn.email,
         password: state.signIn.password,
         rememberMe: state.signIn.rememberMe,
-        auth: state.signIn.auth
+        auth: state.signIn.auth,
+        error: state.signIn.error
     }
 }
 

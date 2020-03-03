@@ -3,6 +3,7 @@ export interface ISignInState {
     password: string,
     rememberMe: boolean,
     auth: boolean,
+    error: null | string
     // isFetching: boolean
 }
 
@@ -11,6 +12,7 @@ export const signInInitialState: ISignInState = {
     password: '',
     rememberMe: false,
     auth: false,
+    error: null
     // isFetching: false
 };
 //

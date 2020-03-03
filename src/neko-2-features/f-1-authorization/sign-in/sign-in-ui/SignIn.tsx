@@ -5,9 +5,10 @@ type Props = {
     email: string
     password: string
     rememberMe: boolean
+    error: null | string
 }
 const SignIn: FC<Props & MapDispatchToPropsType> = (
-    {email, password, rememberMe, signInThunk, signInEmailChange, signInPasswordChange, signInRememberMeChange}
+    {email, password, rememberMe, error, signInThunk, signInEmailChange, signInPasswordChange, signInRememberMeChange}
 ) => {
     const handleSignIn = () => {
         signInThunk(email, password, rememberMe)
@@ -23,6 +24,7 @@ const SignIn: FC<Props & MapDispatchToPropsType> = (
     };
     return (
         <div className="form">
+            {error && <div className="error-message">{error}</div>}
             <input type="text" onChange={emailChange} value={email} placeholder={"your login"}/>
             <br/>
             <input type="text" onChange={passwordChange} value={password} placeholder={"your password"}/>
