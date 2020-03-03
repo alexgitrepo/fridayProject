@@ -1,15 +1,14 @@
-import React, {useState} from 'react';
-import {ISignInState} from "../s-2-bll/b-2-redux/signInInitialState";
+import React, {FC} from 'react';
+import {MapDispatchToPropsType} from "./SignInContainer";
 
-interface MethodsInterface {
-    signInThunk: Function
-    signInEmailChange: Function,
-    signInPasswordChange: Function,
-    signInRememberMeChange: Function
+type Props = {
+    email: string
+    password: string
+    rememberMe: boolean
+    error: null | string
 }
-
-const SignIn: React.FC<ISignInState & MethodsInterface> = (
-    {email, password, rememberMe, signInThunk, signInEmailChange, signInPasswordChange, signInRememberMeChange}
+const SignIn: FC<Props & MapDispatchToPropsType> = (
+    {email, password, rememberMe, error, signInThunk, signInEmailChange, signInPasswordChange, signInRememberMeChange}
 ) => {
     const handleSignIn = () => {
         signInThunk(email, password, rememberMe)
@@ -23,9 +22,9 @@ const SignIn: React.FC<ISignInState & MethodsInterface> = (
     const rememberMeChange = (e: any) => {
         signInRememberMeChange(e.target.checked)
     };
-    console.log('render SignIn');
     return (
-        <div>
+        <div className="form">
+            {error && <div className="error-message">{error}</div>}
             <input type="text" onChange={emailChange} value={email} placeholder={"your login"}/>
             <br/>
             <input type="text" onChange={passwordChange} value={password} placeholder={"your password"}/>
@@ -33,7 +32,7 @@ const SignIn: React.FC<ISignInState & MethodsInterface> = (
             <label htmlFor="rememberMe">Remember me</label>
             <input type="checkbox" onChange={rememberMeChange} name={"rememberMe"} checked={rememberMe}/>
             <br/>
-            <button onClick={handleSignIn}>Sign in*</button>
+            <button onClick={handleSignIn}>Sign in</button>
         </div>
     );
 };
